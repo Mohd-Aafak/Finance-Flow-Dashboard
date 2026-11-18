@@ -1,0 +1,690 @@
+
+/* ===============================
+   GLOBAL STYLES
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    min-height: 100vh;
+    padding: 30px 15px;
+    color: #2d2440;
+}
+
+#container {
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(40, 20, 70, 0.2);
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* ===============================
+   NAVBAR
+================================ */
+
+.navbar {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.navbar h1 {
+    font-size: 32px;
+    color: #764ba2;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+}
+
+
+/* ===============================
+   SUMMARY CARDS
+================================ */
+
+.summary-card {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.summary-card p {
+    background: #F3F0FF;
+    padding: 22px 12px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    color: #764ba2;
+    border: 1px solid #e4dcff;
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+}
+
+
+/* ===============================
+   TRANSACTION FORM
+================================ */
+
+.transaction-form {
+    margin-bottom: 25px;
+}
+
+#form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+#form input,
+#form select {
+    width: 100%;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #d8ccef;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+    background: #ffffff;
+    color: #2d2440;
+    transition: 0.3s ease;
+}
+
+#form input:focus,
+#form select:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.12);
+}
+
+#transaction-btn {
+    grid-column: 1 / -1;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+#transaction-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(118, 75, 162, 0.25);
+}
+
+
+/* ===============================
+   CANCEL EDIT BUTTON
+================================ */
+
+#cancel-edit {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: #ffffff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 8px 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(245, 87, 108, 0.2);
+}
+
+#cancel-edit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(245, 87, 108, 0.35);
+}
+
+#cancel-edit:active {
+    transform: scale(0.97);
+}
+
+#cancel-edit[hidden] {
+    display: none;
+}
+
+
+/* ===============================
+   TRANSACTION FILTERS
+================================ */
+
+#search-input,
+#filter-category,
+#filter-expense-category,
+#sort-transactions,
+#filter-date {
+    min-height: 42px;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #ddd6fe;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #764ba2;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#search-input {
+    width: 100%;
+}
+
+#search-input:focus,
+#filter-category:focus,
+#filter-expense-category:focus,
+#sort-transactions:focus,
+#filter-date:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.12);
+}
+
+
+/* ===============================
+   CLEAR FILTERS BUTTON
+================================ */
+
+#clear-filters {
+    min-height: 42px;
+    padding: 10px 16px;
+    border: 1px solid #c4b5fd;
+    border-radius: 10px;
+    background: #F3F0FF;
+    color: #764ba2;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#clear-filters:hover {
+    background: #764ba2;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+
+/* ===============================
+   EXPORT CSV BUTTON
+================================ */
+
+#export-btn,
+#import-btn {
+    min-height: 42px;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+#export-btn:hover,
+#import-btn:hover {
+    background: linear-gradient(135deg, #764ba2, #f093fb);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(118, 75, 162, 0.3);
+}
+
+
+/* ===============================
+   IMPORT SECTION
+================================ */
+
+.import-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+#import-file {
+    max-width: 100%;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #ddd6fe;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #764ba2;
+}
+
+
+/* ===============================
+   TRANSACTION LIST
+================================ */
+
+#transaction-list {
+    margin-top: 20px;
+}
+
+.transaction-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #F3F0FF;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    border: 1px solid #e4dcff;
+    transition: 0.3s ease;
+}
+
+.transaction-card:hover {
+    box-shadow: 0 5px 15px rgba(80, 50, 120, 0.1);
+    transform: translateY(-2px);
+}
+
+.transaction-card > div {
+    flex: 1;
+    min-width: 120px;
+}
+
+.transaction-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.transaction-card small {
+    display: block;
+    color: #7c6f91;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.transaction-card button {
+    flex-shrink: 0;
+    background: #764ba2;
+    color: #ffffff;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.transaction-card button:hover {
+    background: #5b3480;
+    transform: translateY(-1px);
+}
+
+
+/* ===============================
+   INCOME AND EXPENSE COLORS
+================================ */
+
+.transaction-card.income {
+    border-left: 6px solid #22c55e;
+}
+
+.transaction-card.expense {
+    border-left: 6px solid #ef4444;
+}
+
+
+/* ===============================
+   MONTHLY SUMMARY
+================================ */
+
+.monthly-summary {
+    margin-top: 25px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.monthly-summary h2 {
+    margin-bottom: 15px;
+    color: #764ba2;
+    font-size: 22px;
+}
+
+#month-filter {
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd6fe;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #764ba2;
+    background: #ffffff;
+}
+
+#month-filter:focus {
+    outline: none;
+    border-color: #764ba2;
+}
+
+.monthly-summary p {
+    margin: 12px 0;
+    font-size: 16px;
+    color: #444444;
+    line-height: 1.6;
+}
+
+.monthly-summary span {
+    font-weight: bold;
+    color: #667eea;
+    overflow-wrap: anywhere;
+}
+
+
+/* ===============================
+   BUDGET CARD
+================================ */
+
+.budget-card {
+    margin-top: 25px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.budget-card h2 {
+    margin-bottom: 15px;
+    color: #764ba2;
+    font-size: 22px;
+}
+
+#budget-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd6fe;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 15px;
+}
+
+#budget-input:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.12);
+}
+
+#save-budget {
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+#save-budget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(102, 126, 234, 0.25);
+}
+
+.budget-card p {
+    margin: 14px 0;
+    color: #444444;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.budget-card span {
+    font-weight: bold;
+    color: #667eea;
+}
+
+#budget-remaining {
+    color: #16a34a;
+}
+
+
+/* ===============================
+   BUDGET PROGRESS BAR
+================================ */
+
+.budget-progress {
+    width: 100%;
+    height: 14px;
+    margin-top: 15px;
+    background: #e9e7f5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#budget-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #667eea;
+    border-radius: 20px;
+    transition: width 0.4s ease, background 0.4s ease;
+}
+
+#budget-progress-text {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #764ba2;
+}
+
+
+/* ===============================
+   CHART SECTIONS
+================================ */
+
+.chart-section {
+    background: #ffffff;
+    padding: 24px;
+    margin: 24px 0;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.12);
+    min-width: 0;
+}
+
+.chart-section h2 {
+    color: #764ba2;
+    font-size: 22px;
+    margin-bottom: 20px;
+    overflow-wrap: anywhere;
+}
+
+.chart-section canvas {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: 350px;
+}
+
+
+/* ===============================
+   ACCESSIBILITY AND INTERACTION
+================================ */
+
+button:focus-visible {
+    outline: 3px solid #a78bfa;
+    outline-offset: 3px;
+}
+
+input:disabled,
+select:disabled,
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* ===============================
+   TABLET RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    #container {
+        padding: 24px 18px;
+    }
+
+    .summary-card {
+        gap: 10px;
+    }
+
+    .summary-card p {
+        padding: 18px 8px;
+        font-size: 16px;
+    }
+
+    .transaction-card {
+        gap: 10px;
+    }
+
+    .chart-section {
+        padding: 20px;
+    }
+}
+
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px 10px;
+    }
+
+    #container {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+
+    .navbar h1 {
+        font-size: 27px;
+    }
+
+    .summary-card {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .summary-card p {
+        padding: 16px;
+        font-size: 17px;
+    }
+
+    #form {
+        grid-template-columns: 1fr;
+    }
+
+    #transaction-btn {
+        grid-column: auto;
+    }
+
+    #cancel-edit {
+        width: 100%;
+        margin: 0;
+    }
+
+    #search-input,
+    #filter-category,
+    #filter-expense-category,
+    #sort-transactions,
+    #filter-date,
+    #clear-filters,
+    #export-btn {
+        width: 100%;
+    }
+
+    .import-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #import-file,
+    #import-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .transaction-card {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .transaction-card > div {
+        flex-basis: 100%;
+    }
+
+    .transaction-card button {
+        flex: 1;
+    }
+
+    .monthly-summary,
+    .budget-card {
+        padding: 16px;
+    }
+
+    .monthly-summary h2,
+    .budget-card h2 {
+        font-size: 20px;
+    }
+
+    .chart-section {
+        padding: 16px;
+        margin: 16px 0;
+    }
+
+    .chart-section h2 {
+        font-size: 18px;
+    }
+
+    .chart-section canvas {
+        max-height: 280px;
+    }
+}
+
+
+/* ===============================
+   SMALL MOBILE DEVICES
+================================ */
+
+@media (max-width: 360px) {
+    #container {
+        padding: 16px 10px;
+    }
+
+    .navbar h1 {
+        font-size: 23px;
+    }
+
+    .transaction-card button {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .chart-section {
+        padding: 12px;
+    }
+}

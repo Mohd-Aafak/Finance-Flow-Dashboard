@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main id="container">
+
+        <div class="navbar">
+            <h1>Finance Flow</h1>
+        </div>
+
+        <div class="summary-card">
+            <p id="total-income"></p>
+            <p id="total-expense"></p>
+            <p id="balance"></p>
+        </div>
+
+        <div class="monthly-summary">
+            <h2>Monthly Summary</h2>
+
+            <input type="month" id="month-filter">
+
+            <p>Monthly Income: <span id="monthly-income">₹0</span></p>
+            <p>Monthly Expense: <span id="monthly-expense">₹0</span></p>
+            <p>Monthly Balance: <span id="monthly-balance">₹0</span></p>
+        </div>
+
+        <section class="chart-section">
+            <h2>Monthly Income vs Expense</h2>
+            <canvas id="monthly-chart"></canvas>
+        </section>
+
+        <section class="chart-section">
+            <h2>Category-wise Expenses</h2>
+            <canvas id="category-chart"></canvas>
+        </section>
+
+        <div class="budget-card">
+            <h2>Monthly Budget</h2>
+
+            <input
+                type="number"
+                id="budget-input"
+                placeholder="Enter monthly budget"
+                min="1"
+            >
+
+            <button id="save-budget">Save Budget</button>
+
+            <p>Total Budget: <span id="total-budget">₹0</span></p>
+            <p>Spent: <span id="budget-spent">₹0</span></p>
+            <p>Remaining: <span id="budget-remaining">₹0</span></p>
+
+            <p id="budget-alert"></p>
+
+            <div class="budget-progress">
+                <div id="budget-progress-fill"></div>
+            </div>
+
+            <p id="budget-progress-text">0% used</p>
+        </div>
+
+        <div class="transaction-form">
+            <form id="form">
+                <input
+                    id="title"
+                    type="text"
+                    placeholder="Enter Title"
+                >
+
+                <input
+                    id="amount"
+                    type="number"
+                    placeholder="Enter Amount"
+                >
+
+                <select id="category">
+                    <option value="">Select type</option>
+                    <option value="Expense">Expense</option>
+                    <option value="Deposit">Deposit</option>
+                </select>
+
+                <select id="expense-category">
+                    <option value="">Select expense category</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Education">Education</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <button type="submit" id="transaction-btn">
+                    Add Transaction
+                </button>
+
+                <button type="button" id="cancel-edit" hidden>
+    Cancel Edit
+</button>
+
+            </form>
+
+            <input
+                type="search"
+                id="search-input"
+                placeholder="Search transactions..."
+            >
+
+            <select id="filter-category">
+                <option value="All">All Transactions</option>
+                <option value="Deposit">Deposit</option>
+                <option value="Expense">Expense</option>
+            </select>
+
+            <!-- NEW: Expense Category Filter -->
+            <select id="filter-expense-category">
+                <option value="">All Expense Categories</option>
+                <option value="Food">Food</option>
+                <option value="Travel">Travel</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Bills">Bills</option>
+                <option value="Education">Education</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <div id="transaction-list"></div>
+
+            <select id="sort-transactions">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="high">Amount: High to Low</option>
+                <option value="low">Amount: Low to High</option>
+            </select>
+
+            <button type="button" id="clear-filters">
+                Clear Filters
+            </button>
+
+            <button type="button" id="export-btn">
+                Export to CSV
+            </button>
+
+            <div class="import-section">
+                <input type="file" id="import-file" accept=".csv">
+                <button type="button" id="import-btn">
+                    Import CSV
+                </button>
+            </div>
+
+            <input type="date" id="filter-date">
+        </div>
+
+    </main>
+</body>
+</html>
